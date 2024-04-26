@@ -37,6 +37,7 @@
 			<Add directory="../include" />
 		</Compiler>
 		<Unit filename="src/Complex.h" />
+		<Unit filename="src/Operation.h" />
 		<Unit filename="src/Qubit.h" />
 		<Unit filename="src/main.cpp" />
 		<Extensions>
