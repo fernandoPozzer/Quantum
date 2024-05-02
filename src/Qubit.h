@@ -24,14 +24,14 @@ public:
         state[1] = one;
     }
 
-    Complex GetZero()
+    float GetProbZero()
     {
-        return state[0];
+        return state[0].GetNormSquared();
     }
 
-    Complex GetOne()
+    float GetProbOne()
     {
-        return state[1];
+        return state[1].GetNormSquared();
     }
 
     std::string ToString()

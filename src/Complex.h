@@ -23,6 +23,11 @@ public:
         this->imaginary = imaginary;
     }
 
+    float GetNormSquared()
+    {
+        return real * real + imaginary * imaginary;
+    }
+
     Complex operator * (Complex c)
     {
         float r = real * c.real - imaginary * c.imaginary;
