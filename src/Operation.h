@@ -17,7 +17,7 @@ public:
 
         for(int i = 0; i < 2; i++)
         {
-            aux[i] = Complex::Make(0, 0);
+            aux[i] = Complex(0, 0);
 
             for(int j = 0; j < 2; j++)
             {
@@ -25,7 +25,7 @@ public:
             }
         }
 
-        return Qubit::Make(aux[0], aux[1]);
+        return Qubit(aux[0], aux[1]);
     }
 
     Operation(Complex matrix[2][2])

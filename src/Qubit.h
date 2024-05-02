@@ -5,14 +5,18 @@
 #include <string>
 #include <sstream>
 
-using namespace std;
-
 #include "Complex.h"
 
 class Qubit
 {
 public:
     Complex state[2];
+
+    Qubit()
+    {
+        state[0] = Complex::Zero();
+        state[1] = Complex::Zero();
+    }
 
     Qubit(Complex zero, Complex one)
     {
@@ -30,15 +34,9 @@ public:
         return state[1];
     }
 
-    static Qubit Make(Complex zero, Complex one)
+    std::string ToString()
     {
-        Qubit aux(zero, one);
-        return aux;
-    }
-
-    string ToString()
-    {
-        stringstream s;
+        std::stringstream s;
         s << state[0].ToString() << "| 0> + ";
         s << state[1].ToString() << "| 1>";
 
