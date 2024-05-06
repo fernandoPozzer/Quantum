@@ -37,8 +37,8 @@ public:
     std::string ToString()
     {
         std::stringstream s;
-        s << state[0].ToString() << "| 0> + ";
-        s << state[1].ToString() << "| 1>";
+        s << state[0].ToString() << " |0> + ";
+        s << state[1].ToString() << " |1>";
 
         return s.str();
     }

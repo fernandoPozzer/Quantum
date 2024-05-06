@@ -38,6 +38,7 @@
 		</Compiler>
 		<Unit filename="src/Complex.h" />
 		<Unit filename="src/Operation.h" />
+		<Unit filename="src/QuantumSystem.h" />
 		<Unit filename="src/Qubit.h" />
 		<Unit filename="src/Utils.h" />
 		<Unit filename="src/main.cpp" />

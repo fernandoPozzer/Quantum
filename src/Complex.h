@@ -42,6 +42,12 @@ public:
         imaginary += c.imaginary;
     }
 
+    void operator /= (float f)
+    {
+        real /= f;
+        imaginary /= f;
+    }
+
     static Complex One()
     {
         return Complex(1, 0);;
@@ -69,6 +75,11 @@ public:
             }
 
             s << imaginary << "i";
+        }
+
+        if(real == 0 && imaginary == 0)
+        {
+            s << "0";
         }
 
         return s.str();
