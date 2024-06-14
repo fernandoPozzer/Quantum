@@ -2,50 +2,63 @@
 #ifndef ___OPERATION_H___
 #define ___OPERATION_H___
 
+#include <cassert>
+
 #include "Complex.h"
 #include "Qubit.h"
 
 class Operation
 {
+private:
+
+    Complex* ApplyOperation(Complex* states, int numberOfStates)
+    {
+        Complex* aux = new Complex[numberOfStates];
+
+        for(int i = 0; i < numberOfStates; i++)
+        {
+            for(int j = 0; j < numberOfStates; j++)
+            {
+                aux[i] += matrix[i][j] * states[j];
+            }
+        }
+
+        return aux;
+    }
 public:
 
-    Complex matrix[2][2];
+    Complex **matrix;
+    int dim;
 
     Qubit operator *(Qubit q)
     {
-        Complex aux[2];
+        assert(dim == 2);
 
-        for(int i = 0; i < 2; i++)
-        {
-            aux[i] = Complex(0, 0);
-
-            for(int j = 0; j < 2; j++)
-            {
-                aux[i] += matrix[i][j] * q.state[j];
-            }
-        }
-
+        Complex *aux = ApplyOperation(q.state, 2);
         return Qubit(aux[0], aux[1]);
     }
 
-    Operation(Complex matrix[2][2])
+    Operation(Complex m00, Complex m01, Complex m10, Complex m11)
     {
-        for(int i = 0; i < 2; i++)
+        dim = 2;
+
+        matrix = new Complex*[dim];
+
+        for(int i = 0; i < dim; i++)
         {
-            for(int j = 0; j < 2; j++)
-            {
-                this->matrix[i][j] = matrix[i][j];
-            }
+            matrix[i] = new Complex[dim];
         }
+
+        matrix[0][0] = m00;
+        matrix[0][1] = m01;
+        matrix[1][0] = m10;
+        matrix[1][1] = m11;
     }
 
     static Operation Not()
     {
-        Complex m[2][2] = {{Complex::Zero(), Complex::One()},
-                       {Complex::One(), Complex::Zero()}};
-
-        Operation aux(m);
-        return aux;
+        return Operation(Complex::Zero(), Complex::One(),
+                       Complex::One(), Complex::Zero());
     }
 
     static Operation Hadamard()

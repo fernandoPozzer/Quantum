@@ -21,12 +21,32 @@ int main()
     s.AddQubit(q2);
     s.AddQubit(q3);
 
+    Complex** a;
+    a=new Complex*[2];
+    for(int i=0;i<2;i++)
+    {
+        a[i]=new Complex[2];
+    }
+     Complex x[2][2]= {{Complex::Zero(), Complex::One()},
+                       {Complex::One(), Complex::Zero()}};
+    for(int i=0;i<2;i++) for(int j=0;j<2;j++) a[i][j]=x[i][j];
 
-    cout << s.ToColumnString() << endl;
+    Complex** b;
+    b=new Complex*[2];
+    for(int i=0;i<2;i++)
+    {
+        b[i]=new Complex[2];
+    }
 
-    cout << s.GetProb("111") << endl;
+    Complex Y[2][2] = {{Complex::One(), Complex::Zero()},
+                       {Complex::Zero(), Complex::One()}};
+    for(int i=0;i<2;i++) for(int j=0;j<2;j++) b[i][j]=Y[i][j];
 
-    cout << s.ProbabilityToColumnString() << endl;
+    auto aaaa = Utils::MatrixTensorProduct(a, 2, b, 2);
+    Utils::PrintMatrix(aaaa, 4);
+    cout << endl;
+    Utils::PrintMatrix(Utils::MatrixTensorProduct(aaaa, 4, b, 2), 8);
+
 
     return 0;
 }

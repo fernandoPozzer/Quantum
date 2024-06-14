@@ -5,6 +5,7 @@
 #include <string>
 #include <sstream>
 #include <math.h>
+#include <cassert>
 
 #include "Utils.h"
 #include "Qubit.h"
@@ -82,6 +83,55 @@ public:
         }
 
         return states[index].GetNormSquared();
+    }
+
+    /**
+        Passa o qubit que se quer obter o valor.
+        Comeca em 0 (msb) e termina em numero de bits - 1
+        (lsb).
+    */
+    int Measure(int qubit)
+    {
+        assert(qubit >= 0 && qubit < numberOfBits);
+
+        int aux;
+        int measuredBit;
+
+        float probOfZero;
+
+        for(int i = 0; i < numStates; i++)
+        {
+            aux = Utils::ExtractBit(i, qubit, numberOfBits);
+
+            if(aux == 0)
+            {
+                probOfZero += states[i].GetNormSquared();
+            }
+        }
+
+        if(probOfZero > 0.5)
+        {
+            measuredBit = 0;
+        }
+        else
+        {
+            measuredBit = 1;
+        }
+
+        for(int i = 0; i < numStates; i++)
+        {
+            aux = Utils::ExtractBit(i, qubit, numberOfBits);
+
+            if(aux == measuredBit)
+            {
+                continue;
+            }
+
+            states[i] = Complex(0, 0);
+        }
+
+        NormalizeStates();
+        return measuredBit;
     }
 
     /**

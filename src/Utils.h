@@ -2,6 +2,7 @@
 #ifndef ___UTILS_H___
 #define ___UTILS_H___
 
+#include <iostream>
 #include <string>
 #include <sstream>
 #include <math.h>
@@ -23,6 +24,52 @@ public:
         }
 
         return aux;
+    }
+
+    static Complex** MatrixTensorProduct(Complex** a, int dimA, Complex** b, int dimB)
+    {
+        Complex** aux = new Complex*[dimA * dimB];
+
+        for(int i = 0; i < dimA * dimB; i++)
+        {
+            aux[i] = new Complex[dimA * dimB];
+        }
+        int column=0,row=0;
+        for(int l = 0; l < dimA; l++)
+        {
+            column=0;
+            for(int c=0;c<dimA;c++)
+            {
+                for(int lB=0;lB<dimB;lB++)
+                {
+                    for(int cB=0;cB<dimB;cB++)
+                    {
+                        assert(column+cB>=0 && column+cB<dimA*dimB);
+                        assert(row+lB>=0 && row+lB<dimA*dimB);
+
+                        aux[row+lB][column+cB]=a[l][c]*b[lB][cB];
+                    }
+                }
+                column+=dimB;
+            }
+            row+=dimB;
+        }
+
+
+        return aux;
+    }
+
+    static void PrintMatrix(Complex** a, int dim)
+    {
+        for(int i = 0; i < dim; i++)
+        {
+            for(int j = 0; j < dim; j++)
+            {
+                std::cout << a[i][j].ToString() << " ";
+            }
+
+            std::cout << std::endl;
+        }
     }
 
     static Complex* CopyArray(Complex* v, int sizeV)

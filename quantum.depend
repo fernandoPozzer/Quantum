@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1714948601 source:d:\usuarios\fernando\ciencia_da_computacao\semestre_5\computacaoquantica\quantum\src\main.cpp
+1718374371 source:d:\usuarios\fernando\ciencia_da_computacao\semestre_5\computacaoquantica\quantum\src\main.cpp
 	<iostream>
 	"Complex.h"
 	"Qubit.h"
@@ -17,11 +17,13 @@
 	<sstream>
 	"Complex.h"
 
-1714687350 d:\usuarios\fernando\ciencia_da_computacao\semestre_5\computacaoquantica\quantum\src\operation.h
+1718372359 d:\usuarios\fernando\ciencia_da_computacao\semestre_5\computacaoquantica\quantum\src\operation.h
+	<cassert>
 	"Complex.h"
 	"Qubit.h"
 
-1714949157 d:\usuarios\fernando\ciencia_da_computacao\semestre_5\computacaoquantica\quantum\src\utils.h
+1718374180 d:\usuarios\fernando\ciencia_da_computacao\semestre_5\computacaoquantica\quantum\src\utils.h
+	<iostream>
 	<string>
 	<sstream>
 	<math.h>
@@ -32,10 +34,11 @@
 	"Utils.h"
 	"Qubit.h"
 
-1714970522 d:\usuarios\fernando\ciencia_da_computacao\semestre_5\computacaoquantica\quantum\src\quantumsystem.h
+1718370759 d:\usuarios\fernando\ciencia_da_computacao\semestre_5\computacaoquantica\quantum\src\quantumsystem.h
 	<string>
 	<sstream>
 	<math.h>
+	<cassert>
 	"Utils.h"
 	"Qubit.h"
 
