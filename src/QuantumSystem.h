@@ -20,14 +20,16 @@ private:
     */
     void NormalizeStates()
     {
-        float norm = 0;
+        /*float norm = 0;
 
         for(int i = 0; i < numStates; i++)
         {
             norm += states[i].GetNormSquared();
         }
 
-        norm = sqrt(norm);
+        norm = sqrt(norm);*/
+
+        float norm = Utils::GetNorm(states, numStates);
 
         for(int i = 0; i < numStates; i++)
         {

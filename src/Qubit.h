@@ -6,6 +6,7 @@
 #include <sstream>
 
 #include "Complex.h"
+//#include "Utils.h"
 
 class Qubit
 {
@@ -14,7 +15,7 @@ public:
 
     Qubit()
     {
-        state[0] = Complex::Zero();
+        state[0] = Complex::One();
         state[1] = Complex::Zero();
     }
 
@@ -22,6 +23,10 @@ public:
     {
         state[0] = zero;
         state[1] = one;
+
+        float norm = Utils::GetNorm(state, 2);
+        state[0] /= norm;
+        state[1] /= norm;
     }
 
     float GetProbZero()

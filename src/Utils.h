@@ -7,7 +7,7 @@
 #include <sstream>
 #include <math.h>
 
-#include "Operation.h"
+#include "Complex.h"
 
 class Utils
 {
@@ -46,8 +46,8 @@ public:
                 {
                     for(int cB=0;cB<dimB;cB++)
                     {
-                        assert(column+cB>=0 && column+cB<dimA*dimB);
-                        assert(row+lB>=0 && row+lB<dimA*dimB);
+                        /*assert(column+cB>=0 && column+cB<dimA*dimB);
+                        assert(row+lB>=0 && row+lB<dimA*dimB);*/
 
                         aux[row+lB][column+cB]=a[l][c]*b[lB][cB];
                     }
@@ -59,6 +59,18 @@ public:
 
 
         return aux;
+    }
+
+    static float GetNorm(Complex* states, int numStates)
+    {
+        float norm = 0;
+
+        for(int i = 0; i < numStates; i++)
+        {
+            norm += states[i].GetNormSquared();
+        }
+
+        return sqrt(norm);
     }
 
     static void PrintMatrix(Complex** a, int dim)

@@ -36,6 +36,7 @@
 			<Add option="-std=c++11" />
 			<Add directory="../include" />
 		</Compiler>
+		<Unit filename="src/Circuit.h" />
 		<Unit filename="src/Complex.h" />
 		<Unit filename="src/Operation.h" />
 		<Unit filename="src/QuantumSystem.h" />
