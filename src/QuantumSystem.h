@@ -14,10 +14,6 @@ class QuantumSystem
 {
 private:
 
-    Complex* states = NULL;
-    int numStates = 0;
-    int numberOfBits = 0;
-
     /**
         Normaliza os estados para a soma de suas
         probabilidades ser 1
@@ -41,6 +37,10 @@ private:
 
 public:
 
+    Complex* states = NULL;
+    int numStates = 0;
+    int numberOfBits = 0;
+
     void AddQubit(Qubit q)
     {
         if(states == NULL)
@@ -59,6 +59,48 @@ public:
 
         numStates *= 2;
         numberOfBits++;
+        NormalizeStates();
+    }
+
+    void AddQuantumSystem(QuantumSystem qs)
+    {
+        if(states == NULL)
+        {
+            states = Utils::CopyArray(qs.states, qs.numStates);
+            numStates = qs.numStates;
+            numberOfBits = qs.numberOfBits;
+
+            return;
+        }
+
+        Complex* aux = Utils::TensorProduct(states, numStates, qs.states, qs.numStates);
+
+        delete[] states;
+        states = aux;
+
+        numStates *= qs.numStates;
+        numberOfBits += qs.numberOfBits;
+        NormalizeStates();
+    }
+
+    void StartManualEditing(int numberOfQubits)
+    {
+        numberOfBits = numberOfQubits;
+        numStates = pow(2, numberOfQubits);
+
+        states = new Complex[numStates];
+    }
+
+    void DefineStateProbability(std::string bits, Complex prob)
+    {
+        Assert(bits.size() == numberOfBits, "O numero de bits esta errado para definir o estado");
+
+        int aux = Utils::BinaryStringToNumber(bits);
+        states[aux] = prob;
+    }
+
+    void FinishManualEditing()
+    {
         NormalizeStates();
     }
 
@@ -132,6 +174,18 @@ public:
 
         NormalizeStates();
         return measuredBit;
+    }
+
+    static QuantumSystem PhiPlus()
+    {
+        QuantumSystem qs;
+
+        qs.StartManualEditing(2);
+        qs.DefineStateProbability("00", Complex::One());
+        qs.DefineStateProbability("11", Complex::One());
+        qs.FinishManualEditing();
+
+        return qs;
     }
 
     /**

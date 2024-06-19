@@ -36,6 +36,14 @@ public:
         return Complex(r, i);
     }
 
+    Complex operator * (float f)
+    {
+        float r = real * f;
+        float i = imaginary * f;
+
+        return Complex(r, i);
+    }
+
     void operator += (Complex c)
     {
         real += c.real;

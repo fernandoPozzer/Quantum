@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1718374371 source:d:\usuarios\fernando\ciencia_da_computacao\semestre_5\computacaoquantica\quantum\src\main.cpp
+1718764711 source:d:\usuarios\fernando\ciencia_da_computacao\semestre_5\computacaoquantica\quantum\src\main.cpp
 	<iostream>
 	"Complex.h"
 	"Qubit.h"
@@ -8,7 +8,7 @@
 	"QuantumSystem.h"
 	"Utils.h"
 
-1714948036 d:\usuarios\fernando\ciencia_da_computacao\semestre_5\computacaoquantica\quantum\src\complex.h
+1718765406 d:\usuarios\fernando\ciencia_da_computacao\semestre_5\computacaoquantica\quantum\src\complex.h
 	<string>
 	<sstream>
 
@@ -17,16 +17,19 @@
 	<sstream>
 	"Complex.h"
 
-1718372359 d:\usuarios\fernando\ciencia_da_computacao\semestre_5\computacaoquantica\quantum\src\operation.h
+1718765510 d:\usuarios\fernando\ciencia_da_computacao\semestre_5\computacaoquantica\quantum\src\operation.h
 	<cassert>
 	"Complex.h"
 	"Qubit.h"
+	"QuantumSystem.h"
+	"Utils.h"
 
-1718374180 d:\usuarios\fernando\ciencia_da_computacao\semestre_5\computacaoquantica\quantum\src\utils.h
+1718664867 d:\usuarios\fernando\ciencia_da_computacao\semestre_5\computacaoquantica\quantum\src\utils.h
 	<iostream>
 	<string>
 	<sstream>
 	<math.h>
+	"Operation.h"
 
 1714945622 d:\usuarios\fernando\ciencia_da_computacao\semestre_5\computacaoquantica\quantum\src\superposition.h
 	<string>
@@ -34,7 +37,7 @@
 	"Utils.h"
 	"Qubit.h"
 
-1718370759 d:\usuarios\fernando\ciencia_da_computacao\semestre_5\computacaoquantica\quantum\src\quantumsystem.h
+1718765135 d:\usuarios\fernando\ciencia_da_computacao\semestre_5\computacaoquantica\quantum\src\quantumsystem.h
 	<string>
 	<sstream>
 	<math.h>

@@ -7,6 +7,8 @@
 #include <sstream>
 #include <math.h>
 
+#include "Operation.h"
+
 class Utils
 {
 public:
@@ -132,5 +134,24 @@ public:
         return (float) aux / pow(10, numberOfDecimals);
     }
 };
+
+void Assert(bool condition, std::string message)
+{
+    if(condition)
+    {
+        return;
+    }
+
+    std::stringstream s;
+
+    s << "\n\n";
+    s << "---------------\n";
+    s << "ERRO: " << message << std::endl;
+    s << "---------------\n";
+
+    std::cout << s.str();
+
+    exit(-1);
+}
 
 #endif
