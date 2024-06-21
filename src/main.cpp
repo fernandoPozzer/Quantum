@@ -43,14 +43,17 @@ void DemonstrateTeleportation(Qubit psi)
     cout << "Medida do qubit 0: " << c.Measure(0) << endl;
     cout << "Medida do qubit 1: " << c.Measure(1) << endl << endl;
 
+    cout << endl << "SISTEMA APOS MEDIDAS: " << endl << endl;
+    cout << c.qs.ToColumnString() << endl;
+
     cout << "------------------------------" << endl;
-    cout << "X (se qubit(0) = 1):" << endl << endl;
+    cout << "X (se qubit(1) = 1):" << endl << endl;
 
     c.StartConditionalOperation(2, Operation::X(), 1, 1);
     c.FinishOperation();
 
     cout << "------------------------------" << endl;
-    cout << "Z (se qubit(1) = 1):" << endl << endl;
+    cout << "Z (se qubit(0) = 1):" << endl << endl;
 
     c.StartConditionalOperation(2, Operation::Z(), 0, 1);
     c.FinishOperation();
@@ -58,7 +61,7 @@ void DemonstrateTeleportation(Qubit psi)
 
 int main()
 {
-    Qubit q(Complex(0.25, 0), Complex(0.75, 0));
+    Qubit q(Complex(1, 0), Complex(-1, 0));
     DemonstrateTeleportation(q);
 
 

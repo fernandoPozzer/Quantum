@@ -98,6 +98,7 @@ public:
 
         if(qubitsValues[condQubit] != condQubitValue)
         {
+            std::cout << "  - A OPERACAO NAO VAI ACONTECER!!!" << std::endl;
             return;
         }
 
